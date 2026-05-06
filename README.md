@@ -14,3 +14,6 @@ Como sera percorrer a lista de data?
 por hoje dia do trabalhador 2026 consegui fazer as noticias aparecerem. pausa
 
 ter uma funcao para filtrar. aparecer o quiz na sequencia
+
+import es7 + react/redux/re
+questioCard é o product-card
