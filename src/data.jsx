@@ -34,14 +34,14 @@ export const temaQuiz = [
         tema: "Inteligência Artificial",
         perguntas: [
             {
-                pergunta: "O que é inteligência artificial?",
-                opcoes: [
+                pergunta: "O que é inteligência artificial?", //question
+                opcoes: [                                      //options
                     "Um tipo de computador que pode pensar como um humano",
                     "Uma técnica de programação para criar jogos",
                     "Um software que simula a inteligência humana",
                     " Uma linguagem de programação"
                 ],
-                resposta_correta: 2
+                resposta_correta: 2         //answer
             }
         ]
 
