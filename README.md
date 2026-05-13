@@ -17,3 +17,5 @@ ter uma funcao para filtrar. aparecer o quiz na sequencia
 
 import es7 + react/redux/re
 questioCard é o product-card
+
+.gitignore -> ignora arquivos que não devemos enviar para o github

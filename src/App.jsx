@@ -3,8 +3,24 @@ import { noticiaText, temaQuiz } from "./data";
 import { useState } from "react";
 
 export default function App() {
-  {/*criando os estados  */}
+  {/*criando os estados para escolha de perguntas e respostas */}
   const [currentProduct, setCurrentProduct] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [score, setScore] = useState(0);
+  const [isFinished, setIsFinished] = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
+
+  {/*função de decisao */}
+  const handleAnswer = (opcoes) => {
+      if (showFeedback) return;
+      setSelectedAnswer(opcoes);
+      setShowFeedback(true);
+
+      if (opcoes === temaQuiz[currentProduct].perguntas[0].resposta_correta) {
+          setScore(score + 1);
+      }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col 
     items-center justify-center p-4">
@@ -14,10 +30,13 @@ export default function App() {
       </div>
       {/*recebe os dados de data para o quiz como o temaQuiz é um array
       precisa escolher a posição para depois acessar o objeto (perguntas) */}
-        <ProductCard data={temaQuiz[0]?.perguntas[currentProduct]} />
+        <ProductCard onAnswer={handleAnswer} data={temaQuiz[0]?.perguntas[currentProduct]} />
         {/*<main className='flex-1 flex items-center justify-center'>
         <ProductCard noticiaText={noticiaText}/>
-      </main> */}
+      </main> 
+      if data={temaQuiz.tema} === data={noticiaText.tema}
+      <div> <ProductCard noticiaText={noticiaText} /> </div>
+      */}
     </div>
   );
 }
