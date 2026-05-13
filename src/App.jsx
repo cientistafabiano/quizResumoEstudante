@@ -13,11 +13,22 @@ export default function App() {
   {/*função de decisao */}
   const handleAnswer = (opcao) => {
       if (showFeedback) return;
+
       setSelectedAnswer(opcao);
       setShowFeedback(true);
 
       if (opcao === temaQuiz[currentProduct].perguntas[1].resposta_correta) {
           setScore(score + 1);
+      }
+  };
+  {/*função seguir para a próxima pergunta */}
+  const handleNextQuestion = () => {
+      if (currentProduct + 1 < temaQuiz[0].perguntas.length) {
+          setCurrentProduct(currentProduct + 1);
+          setSelectedAnswer(null);
+          setShowFeedback(false);
+      } else {
+          setIsFinished(true);
       }
   };
 
@@ -31,7 +42,20 @@ export default function App() {
       {/*recebe os dados de data para o quiz como o temaQuiz é um array
       precisa escolher a posição para depois acessar o objeto (perguntas) */}
         <p>Pontuação: {score}</p>
-        <ProductCard onAnswer={handleAnswer} data={temaQuiz[0]?.perguntas[currentProduct]} />
+        <ProductCard 
+        onAnswer={handleAnswer} 
+        data={temaQuiz[0]?.perguntas[currentProduct]} 
+        selected={selectedAnswer}
+        />
+        {/*criando o button de próxima pergunta */}
+        <div>
+          {showFeedback && (
+            <button onClick={handleNextQuestion}>
+              {currentProduct + 1 < temaQuiz[0].perguntas.length ? 
+              'Continue' : 'Veja resultados'}
+            </button>)}
+
+        </div>
         {/*<main className='flex-1 flex items-center justify-center'>
         <ProductCard noticiaText={noticiaText}/>
       </main> 
