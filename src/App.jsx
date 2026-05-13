@@ -11,12 +11,12 @@ export default function App() {
   const [showFeedback, setShowFeedback] = useState(false);
 
   {/*função de decisao */}
-  const handleAnswer = (opcoes) => {
+  const handleAnswer = (opcao) => {
       if (showFeedback) return;
-      setSelectedAnswer(opcoes);
+      setSelectedAnswer(opcao);
       setShowFeedback(true);
 
-      if (opcoes === temaQuiz[currentProduct].perguntas[0].resposta_correta) {
+      if (opcao === temaQuiz[currentProduct].perguntas[1].resposta_correta) {
           setScore(score + 1);
       }
   };
@@ -30,6 +30,7 @@ export default function App() {
       </div>
       {/*recebe os dados de data para o quiz como o temaQuiz é um array
       precisa escolher a posição para depois acessar o objeto (perguntas) */}
+        <p>Pontuação: {score}</p>
         <ProductCard onAnswer={handleAnswer} data={temaQuiz[0]?.perguntas[currentProduct]} />
         {/*<main className='flex-1 flex items-center justify-center'>
         <ProductCard noticiaText={noticiaText}/>

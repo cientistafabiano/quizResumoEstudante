@@ -1,7 +1,7 @@
 //import {Card} from './Card.jsx';
 import React from "react";
 
-export default function ProductCard({ data, onAnswer }) {
+export default function ProductCard({ data, onAnswer, showFeedback }) {
     {/*criando as variaveis que recebem os dados de data */}
     const { pergunta, opcoes, resposta_correta } = data;
     const {tema, titulo, resumo, conteudo_completo} = data;
@@ -14,9 +14,10 @@ export default function ProductCard({ data, onAnswer }) {
                 {opcoes.map((opcao, index) => (
                     <button 
                         className='text-left px-4 py-3 cursor-pointer
-                        bg-blue-800 rounded-lg text-white'
+                        bg-blue-800 rounded-lg text-white disabled: bg-gray-200'
                         key={index}
-                        onClick={() => onAnswer(opcoes)}  >  
+                        onClick={() => onAnswer(opcao)}  
+                        disabled={showFeedback}>  
                         {opcao}
                     </button>
                 ))}
