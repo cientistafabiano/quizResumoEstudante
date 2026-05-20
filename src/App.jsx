@@ -18,16 +18,18 @@ export default function App() {
       setSelectedAnswer(opcao);
       setShowFeedback(true);
 
-      if (opcao === temaQuiz[0].perguntas[currentProduct].resposta_correta) {
+      if (opcao === temaQuiz[currentProduct].perguntas[0].resposta_correta) {
           setScore(score + 1);
       }
   };
   {/*função seguir para a próxima pergunta */}
   const handleNextQuestion = () => {
-      if (currentProduct + 1 < temaQuiz.length) {
+    setSelectedAnswer(null);
+    setShowFeedback(false);  
+    
+    if (currentProduct + 1 < temaQuiz.length) {
           setCurrentProduct(currentProduct + 1);
-          setSelectedAnswer(null);
-          setShowFeedback(false);
+          
       } else {
           setIsFinished(true);
       }
@@ -43,13 +45,15 @@ export default function App() {
   {/*função calcular o progresso do quiz */}
   const calculateProgress = () => {
     if (isFinished) return 100;
-    const baseProgress = (currentProduct / temaQuiz[0].perguntas.length) * 100;
-    const questionProgress = selectedAnswer ? (1 / temaQuiz[0].perguntas.length) * 100 : 0;
+    const baseProgress = (currentProduct / temaQuiz.length) * 100;
+    const questionProgress = selectedAnswer ? (1 / temaQuiz.length) * 100 : 0;
     return baseProgress + questionProgress;
   };
 
-  const percentage = (score / temaQuiz[0].perguntas.length) * 100;
+  const percentage = (score / temaQuiz.length) * 100;
   const showConfetti = isFinished && percentage > 50; 
+
+ 
 
   return (
     <div className="min-h-screen bg-gray-900
@@ -77,7 +81,7 @@ export default function App() {
           <ProductCard 
             showFeedback={showFeedback}
             onAnswer={handleAnswer} 
-            data={temaQuiz[0].perguntas[currentProduct]} 
+            data={temaQuiz[currentProduct]} 
             current={currentProduct}            
             total={temaQuiz.length}
             selected={selectedAnswer}
