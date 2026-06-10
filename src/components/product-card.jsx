@@ -1,6 +1,8 @@
 //import {Card} from './Card.jsx';
 import React from "react";
 import { temaQuiz } from "../data";
+//update
+//import { gerarQuiz } from "../service/aiQuiz";
 
 export default function ProductCard({ data, onAnswer, 
     showFeedback, selected, current, total }) {
@@ -10,6 +12,9 @@ export default function ProductCard({ data, onAnswer,
    //fazer mudanças
    const temaAtual = temaQuiz[current];
    const perguntaAtual = temaAtual?.perguntas[0]
+   //update
+    //const temaAtual = gerarQuiz(current);
+   // const perguntaAtual = temaAtual?.perguntas[0]    
 
     {/*funcao button alterando a cor */}
     const getButtonStyle = (index) => {
@@ -26,7 +31,7 @@ export default function ProductCard({ data, onAnswer,
     return (
         <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-full 
             max-w-xl border border-gray-700">             
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col  md:flex-row justify-between md:items-center gap-3 mb-4">
                 <span className="bg-indigo-500 text-slate-900 font-bold px-3 py-1 
                 rounded-full text-xs uppercase tracking-wider" >{temaAtual.tema}</span>
                 <h2 className="text-lg font-medium text-gray-300">

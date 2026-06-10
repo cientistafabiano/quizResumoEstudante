@@ -3,6 +3,7 @@ import { noticiaText, temaQuiz } from "./data";
 import { useState } from "react";
 import Confetti from "react-confetti";
 
+
 export default function App() {
   {/*criando os estados para escolha de perguntas e respostas */}
   const [currentProduct, setCurrentProduct] = useState(0);
@@ -10,8 +11,8 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
- 
-  {/*função de decisao não esta reconhecendo a proxima pergunta*/}
+
+ {/*funcao para lidar com a resposta do usuário */}
   const handleAnswer = (opcao) => {
       if (showFeedback) return;
 
@@ -51,7 +52,7 @@ export default function App() {
   };
 
   const percentage = (score / temaQuiz.length) * 100;
-  const showConfetti = isFinished && percentage > 50; 
+  const showConfetti = isFinished && percentage >= 50; 
 
  
 
@@ -85,7 +86,7 @@ export default function App() {
             current={currentProduct}            
             total={temaQuiz.length}
             selected={selectedAnswer}
-          />{/*erro ta aqui pra pegar o tamanho do array - total */}
+          />{/*erro ta aqui pra pegar o tamanho do array - total - concertei */}
           {/*criando o button de próxima pergunta */}
           <div className="mt-6 min-h-[60px]">
             {showFeedback && (
@@ -106,6 +107,9 @@ export default function App() {
               <span className="font-bold">{temaQuiz.length}</span> e isto é{" "}
               {Math.round((score / temaQuiz.length) * 100)}%
             </p>
+            {/*aqui colocarei o card de noticia: tema e resumo
+            com button ver noticia completa */}
+            <div></div>
             <button
               className="bg-gradient-to-r from-indigo-600 to-purple-600 py-3 px-6 rounded-lg font-medium shadow-lg cursor-pointer"
               onClick={restartQuiz}
