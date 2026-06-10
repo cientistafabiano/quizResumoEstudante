@@ -19,3 +19,5 @@ import es7 + react/redux/re
 questioCard é o product-card
 
 .gitignore -> ignora arquivos que não devemos enviar para o github
+
+preciso fazer a responsividade
